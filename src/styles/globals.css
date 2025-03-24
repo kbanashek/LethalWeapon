@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  h1 {
+    @apply text-4xl font-bold text-ocean-blue;
+  }
+  h2 {
+    @apply text-3xl font-semibold text-ocean-blue;
+  }
+  h3 {
+    @apply text-2xl font-medium text-ocean-blue;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-ocean-blue text-white hover:bg-deep-sea;
+  }
+  .btn-secondary {
+    @apply bg-sunset-orange text-white hover:bg-amber-600;
+  }
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
