@@ -2,12 +2,15 @@
   "name": "lethal-weapon-fishing",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kbanashek.github.io/LethalWeapon",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build"
+    "export": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
@@ -27,6 +30,7 @@
     "autoprefixer": "^10.4.15",
     "eslint": "^8.47.0",
     "eslint-config-next": "^14.0.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
