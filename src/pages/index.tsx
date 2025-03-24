@@ -39,8 +39,27 @@ const Home = () => {
     <>
       <Head>
         <title>
-          Lethal Weapon Fishing Charters - Unforgettable Fishing Adventures
+          Key Largo Fishing Charters | Lethal Weapon Fishing Charters
         </title>
+        <meta
+          name="description"
+          content="Experience premier Key Largo fishing charters with Lethal Weapon. Target Mahi-Mahi, Tuna, Wahoo, Sailfish, and Snapper on our offshore and nearshore fishing adventures."
+        />
+        <meta
+          name="keywords"
+          content="Key Largo fishing, offshore fishing, deep sea fishing, Mahi-Mahi, Tuna, Wahoo, Sailfish, Snapper, Florida Keys fishing charters, sport fishing, family fishing trips"
+        />
+        <meta
+          property="og:title"
+          content="Key Largo Fishing Charters | Lethal Weapon Fishing"
+        />
+        <meta
+          property="og:description"
+          content="Book your Key Largo fishing adventure with Captain Pete. Target Mahi-Mahi, Tuna, Wahoo, Sailfish, and more on our custom offshore fishing charters."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://lethalweaponfishing.com/" />
       </Head>
 
       {/* Hero Section */}
