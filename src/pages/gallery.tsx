@@ -1,8 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
+import fs from "fs";
+import path from "path";
 
-const Gallery = () => {
+// Define the type for our gallery items
+interface GalleryItem {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  imagePath: string;
+}
+
+// Define props for the Gallery component
+interface GalleryProps {
+  images: string[];
+  basePath: string;
+}
+
+export async function getStaticProps() {
+  // Get all image files from the public/images directory
+  const imagesDirectory = path.join(process.cwd(), "public/images");
+  const imageFiles = fs.readdirSync(imagesDirectory);
+
+  // Filter for image files only
+  const imageExtensions = [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".JPG",
+    ".JPEG",
+    ".PNG",
+  ];
+  const images = imageFiles.filter((file) => {
+    const ext = path.extname(file).toLowerCase();
+    return (
+      imageExtensions.includes(ext) ||
+      imageExtensions.includes(ext.toUpperCase())
+    );
+  });
+
+  return {
+    props: {
+      images,
+      basePath: "/LethalWeapon", // Get this from your next.config.js
+    },
+  };
+}
+
+const Gallery = ({ images, basePath }: GalleryProps) => {
   // Gallery categories
   const categories = [
     { id: "all", name: "All Photos" },
@@ -12,100 +59,63 @@ const Gallery = () => {
     { id: "team", name: "Our Team" },
   ];
 
-  // Placeholder gallery items
-  const galleryItems = [
-    {
-      id: 1,
-      category: "boat",
-      title: "Our Charter Boat",
-      description:
-        "Our 36-foot charter boat equipped with the latest technology.",
-      imagePath: "/images/boat1.jpg",
-    },
-    {
-      id: 2,
-      category: "boat",
-      title: "Boat Interior",
-      description: "Comfortable seating and modern amenities on board.",
-      imagePath: "/images/boat2.jpg",
-    },
-    {
-      id: 3,
-      category: "catches",
-      title: "Marlin Catch",
-      description: "A beautiful Blue Marlin caught during a full-day charter.",
-      imagePath: "/images/catch1.jpg",
-    },
-    {
-      id: 4,
-      category: "catches",
-      title: "Mahi-Mahi",
-      description: "Colorful Mahi-Mahi caught offshore.",
-      imagePath: "/images/catch2.jpg",
-    },
-    {
-      id: 5,
-      category: "catches",
-      title: "Yellowfin Tuna",
-      description: "A nice Yellowfin Tuna caught during a specialty charter.",
-      imagePath: "/images/catch3.jpg",
-    },
-    {
-      id: 6,
-      category: "charters",
-      title: "Family Charter",
-      description: "A family enjoying their day on the water.",
-      imagePath: "/images/charter1.jpg",
-    },
-    {
-      id: 7,
-      category: "charters",
-      title: "Corporate Event",
-      description: "A corporate team building fishing trip.",
-      imagePath: "/images/charter2.jpg",
-    },
-    {
-      id: 8,
-      category: "team",
-      title: "Captain Mike",
-      description:
-        "Our experienced captain with over 20 years of fishing experience.",
-      imagePath: "/images/team1.jpg",
-    },
-    {
-      id: 9,
-      category: "team",
-      title: "First Mate Jack",
-      description:
-        "Our skilled first mate who ensures you have a great fishing experience.",
-      imagePath: "/images/team2.jpg",
-    },
-    {
-      id: 10,
-      category: "catches",
-      title: "Sailfish",
-      description: "A beautiful Sailfish caught and released during a charter.",
-      imagePath: "/images/catch4.jpg",
-    },
-    {
-      id: 11,
-      category: "catches",
-      title: "Grouper",
-      description: "A nice Grouper caught during a half-day charter.",
-      imagePath: "/images/catch5.jpg",
-    },
-    {
-      id: 12,
-      category: "boat",
-      title: "Fishing Equipment",
-      description:
-        "Top-quality fishing rods and reels available on our charters.",
-      imagePath: "/images/boat3.jpg",
-    },
-  ];
-
+  // State to hold our generated gallery items
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  // Generate gallery items from the images
+  useEffect(() => {
+    const items: GalleryItem[] = images.map((image, index) => {
+      // Determine category based on image name or other criteria
+      // This is a simple example - you might want to use a more sophisticated approach
+      let category = "charters"; // Default category
+      const imageLower = image.toLowerCase();
+
+      if (
+        imageLower.includes("boat") ||
+        imageLower.includes("crusader") ||
+        imageLower.includes("grady")
+      ) {
+        category = "boat";
+      } else if (
+        imageLower.includes("catch") ||
+        imageLower.includes("fish") ||
+        imageLower.includes("mahi") ||
+        imageLower.includes("tuna") ||
+        imageLower.includes("snapper") ||
+        imageLower.includes("grouper")
+      ) {
+        category = "catches";
+      } else if (
+        imageLower.includes("captain") ||
+        imageLower.includes("pete") ||
+        imageLower.includes("team") ||
+        imageLower.includes("crew")
+      ) {
+        category = "team";
+      }
+
+      // Generate a title from the image name
+      const fileName = path.basename(image, path.extname(image));
+      const title = fileName
+        .replace(/[_-]/g, " ")
+        .replace(/([A-Z])/g, " $1")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      return {
+        id: index + 1,
+        category,
+        title: title || "Fishing Charter Photo",
+        description:
+          "Experience the thrill of fishing in Key Largo with Captain Pete.",
+        imagePath: `${basePath}/images/${image}`,
+      };
+    });
+
+    setGalleryItems(items);
+  }, [images, basePath]);
 
   // Filter gallery items based on active category
   const filteredItems =
@@ -196,19 +206,21 @@ const Gallery = () => {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <div
                 key={item.id}
                 className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 onClick={() => openLightbox(item.id)}
               >
                 <div className="relative h-64 w-full bg-gray-300">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gray-500">Image placeholder</span>
-                  </div>
+                  <img
+                    src={item.imagePath}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+                  {/* <h3 className="text-lg font-semibold mb-1">{item.title}</h3> */}
                   <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               </div>
@@ -292,9 +304,11 @@ const Gallery = () => {
             {/* Image container */}
             <div className="bg-white rounded-lg overflow-hidden">
               <div className="relative h-[60vh] w-full bg-gray-300">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-gray-500">Image placeholder</span>
-                </div>
+                <img
+                  src={selectedItem.imagePath}
+                  alt={selectedItem.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">

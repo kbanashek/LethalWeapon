@@ -9,7 +9,11 @@ const Header = () => {
     <header className="bg-ocean-blue shadow-md">
       <div className="container-custom py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-white text-2xl font-bold">
+          <Link
+            href="/"
+            className="text-sunset-orange text-2xl md:text-3xl font-marker hover:text-white transition-colors tracking-wide"
+            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
+          >
             Lethal Weapon Fishing Charters
           </Link>
 
@@ -54,57 +58,72 @@ const Header = () => {
             >
               Home
             </Link>
-            
+
             {/* Boats Dropdown */}
             <div className="relative group">
-              <button 
-                className="text-white hover:text-sunset-orange transition-colors flex items-center"
+              <button
+                className="text-white hover:text-ocean-blue transition-colors flex items-center py-2 px-3 rounded-md hover:bg-blue-50"
                 onClick={() => setIsBoatsDropdownOpen(!isBoatsDropdownOpen)}
                 onMouseEnter={() => setIsBoatsDropdownOpen(true)}
-                onMouseLeave={() => setIsBoatsDropdownOpen(false)}
+                aria-expanded={isBoatsDropdownOpen}
+                aria-haspopup="true"
               >
                 Our Boats
-                <svg 
-                  className="ml-1 h-4 w-4" 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  className="ml-1 h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
-              
+
               {/* Dropdown Menu */}
-              <div 
-                className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 ${isBoatsDropdownOpen ? 'block' : 'hidden'} group-hover:block`}
+              <div
+                className={`absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-50 ${
+                  isBoatsDropdownOpen ? "block" : "hidden"
+                }`}
                 onMouseEnter={() => setIsBoatsDropdownOpen(true)}
-                onMouseLeave={() => setIsBoatsDropdownOpen(false)}
+                onMouseLeave={() => {
+                  setTimeout(() => setIsBoatsDropdownOpen(false), 200);
+                }}
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="boats-menu"
               >
                 <div className="py-1">
-                  <Link 
-                    href="/crusader" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  <Link
+                    href="/crusader"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-ocean-blue"
+                    role="menuitem"
                   >
                     34ft Crusader
                   </Link>
-                  <Link 
-                    href="/grady-white" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  <Link
+                    href="/grady-white"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-ocean-blue"
+                    role="menuitem"
                   >
-                    22' Grady-White
+                    23' Grady-White
                   </Link>
                 </div>
               </div>
             </div>
-            
+
             <Link
               href="/captain"
               className="text-white hover:text-sunset-orange transition-colors"
             >
               About Captain
             </Link>
-            
+
             <Link
               href="/rates"
               className="text-white hover:text-sunset-orange transition-colors"
@@ -137,45 +156,67 @@ const Header = () => {
               >
                 Home
               </Link>
-              
+
               {/* Mobile Boats Dropdown */}
               <div>
-                <button 
-                  className="text-white hover:text-sunset-orange transition-colors flex items-center"
+                <button
+                  className="text-white hover:text-sunset-orange transition-colors flex items-center py-2"
                   onClick={() => setIsBoatsDropdownOpen(!isBoatsDropdownOpen)}
+                  aria-expanded={isBoatsDropdownOpen}
+                  aria-haspopup="true"
                 >
                   Our Boats
-                  <svg 
-                    className={`ml-1 h-4 w-4 transform ${isBoatsDropdownOpen ? 'rotate-180' : ''}`} 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
+                  <svg
+                    className={`ml-1 h-4 w-4 transform ${
+                      isBoatsDropdownOpen ? "rotate-180" : ""
+                    }`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                
+
                 {isBoatsDropdownOpen && (
-                  <div className="pl-4 mt-2 space-y-2">
+                  <div
+                    className="pl-4 mt-2 space-y-2"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="mobile-boats-menu"
+                  >
                     <Link
                       href="/crusader"
-                      className="block text-white hover:text-sunset-orange transition-colors"
-                      onClick={() => {setIsMenuOpen(false); setIsBoatsDropdownOpen(false);}}
+                      className="block text-white hover:text-sunset-orange transition-colors py-2"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsBoatsDropdownOpen(false);
+                      }}
+                      role="menuitem"
                     >
                       34ft Crusader
                     </Link>
                     <Link
                       href="/grady-white"
-                      className="block text-white hover:text-sunset-orange transition-colors"
-                      onClick={() => {setIsMenuOpen(false); setIsBoatsDropdownOpen(false);}}
+                      className="block text-white hover:text-sunset-orange transition-colors py-2"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsBoatsDropdownOpen(false);
+                      }}
+                      role="menuitem"
                     >
-                      22' Grady-White
+                      23' Grady-White
                     </Link>
                   </div>
                 )}
               </div>
-              
+
               <Link
                 href="/captain"
                 className="text-white hover:text-sunset-orange transition-colors"
@@ -183,7 +224,7 @@ const Header = () => {
               >
                 About Captain
               </Link>
-              
+
               <Link
                 href="/rates"
                 className="text-white hover:text-sunset-orange transition-colors"

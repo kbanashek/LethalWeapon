@@ -21,12 +21,15 @@ type FormData = {
   date: string;
   guests: string;
   package: string;
+  boat: string;
   message: string;
 };
 
 const Contact = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
+    "idle"
+  );
+  const [statusMessage, setStatusMessage] = useState("");
   // State for the random background image
   const [backgroundImage, setBackgroundImage] = useState<string>("");
 
@@ -44,30 +47,37 @@ const Contact = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      setFormStatus('idle');
+      setFormStatus("idle");
       // Send form data to our API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
-      
+
       if (!response.ok) {
-        throw new Error(result.message || 'Something went wrong');
+        throw new Error(result.message || "Something went wrong");
       }
-      
+
       // Reset form after successful submission
       reset();
-      setFormStatus('success');
-      setStatusMessage(result.message || 'Your inquiry has been sent successfully! We will get back to you soon.');
+      setFormStatus("success");
+      setStatusMessage(
+        result.message ||
+          "Your inquiry has been sent successfully! We will get back to you soon."
+      );
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus('error');
-      setStatusMessage(error instanceof Error ? error.message : 'Failed to send your inquiry. Please try again later.');
+      console.error("Error submitting form:", error);
+      setFormStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Failed to send your inquiry. Please try again later."
+      );
     }
   };
 
@@ -80,7 +90,7 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="relative h-[40vh]">
         <div className="absolute inset-0 bg-gray-900/70 z-10" />
-        <div 
+        <div
           className="relative h-full w-full bg-cover bg-center"
           style={{ backgroundImage: `url('${backgroundImage}')` }}
         >
@@ -243,20 +253,41 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ocean-blue"
-                    placeholder="Tell us about your fishing interests or any questions you have..."
-                    {...register("message")}
-                  ></textarea>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="boat"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Preferred Boat
+                    </label>
+                    <select
+                      id="boat"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ocean-blue"
+                      {...register("boat")}
+                    >
+                      <option value="">Select a boat (optional)</option>
+                      <option value="crusader">34ft Crusader</option>
+                      <option value="grady-white">23' Grady-White</option>
+                      <option value="no-preference">No preference</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={5}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ocean-blue"
+                      placeholder="Tell us about your fishing interests or any questions you have..."
+                      {...register("message")}
+                    ></textarea>
+                  </div>
                 </div>
 
                 <div>
@@ -268,10 +299,10 @@ const Contact = () => {
                     {isSubmitting ? "Sending..." : "Send Inquiry"}
                   </button>
 
-                  {formStatus === 'success' && (
+                  {formStatus === "success" && (
                     <p className="mt-4 text-green-600">{statusMessage}</p>
                   )}
-                  {formStatus === 'error' && (
+                  {formStatus === "error" && (
                     <p className="mt-4 text-red-600">{statusMessage}</p>
                   )}
                 </div>

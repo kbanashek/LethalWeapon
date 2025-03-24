@@ -17,21 +17,20 @@ const Home = () => {
   const featuredCatches = [
     {
       id: 1,
-      title: "Giant Marlin",
-      description: "A beautiful 250lb Blue Marlin caught off the coast.",
+      title: "Mahi-Mahi",
+      description: "A proper day of Mahi-Mahi fishing",
       image: "/LethalWeapon/images/IMG_3663.jpeg",
     },
     {
       id: 2,
-      title: "Mahi-Mahi",
-      description: "Colorful Mahi-Mahi caught during our half-day charter.",
+      title: "Mutton Snapper",
+      description: "One of tastiest catches of the day",
       image: "/LethalWeapon/images/IMG_4011.jpeg",
     },
     {
       id: 3,
-      title: "Yellowfin Tuna",
-      description:
-        "A group of anglers with their impressive Yellowfin Tuna catch.",
+      title: "Wahoo",
+      description: "Our favorite fish to target...Wahoo!",
       image: "/LethalWeapon/images/IMG_4104.jpeg",
     },
   ];
@@ -47,7 +46,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative h-[50vh]">
         <div className="absolute inset-0 bg-gray-900/70 z-10" />
-        <div 
+        <div
           className="relative h-full w-full bg-cover bg-center"
           style={{ backgroundImage: `url('${backgroundImage}')` }}
         >
@@ -102,7 +101,12 @@ const Home = () => {
               </Link>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/LethalWeapon/images/IMG_6936.jpeg')` }} />
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url('/LethalWeapon/images/IMG_6936.jpeg')`,
+                }}
+              />
             </div>
           </div>
         </div>
@@ -126,8 +130,8 @@ const Home = () => {
                 className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="relative h-64 w-full">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center" 
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url('${catch_.image}')` }}
                   />
                 </div>
