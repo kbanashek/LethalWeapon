@@ -99,6 +99,13 @@ const Header = () => {
             </div>
             
             <Link
+              href="/captain"
+              className="text-white hover:text-sunset-orange transition-colors"
+            >
+              About Captain
+            </Link>
+            
+            <Link
               href="/rates"
               className="text-white hover:text-sunset-orange transition-colors"
             >
@@ -168,6 +175,14 @@ const Header = () => {
                   </div>
                 )}
               </div>
+              
+              <Link
+                href="/captain"
+                className="text-white hover:text-sunset-orange transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Captain
+              </Link>
               
               <Link
                 href="/rates"
