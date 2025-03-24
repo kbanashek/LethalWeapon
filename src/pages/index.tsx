@@ -44,7 +44,7 @@ const Home = () => {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative h-[50vh]">
+      <section className="relative h-[40vh]">
         <div className="absolute inset-0 bg-gray-900/70 z-10" />
         <div
           className="relative h-full w-full bg-cover bg-center"
