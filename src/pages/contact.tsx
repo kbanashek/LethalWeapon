@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
+import { getRandomBackgroundImage } from "@/utils/imageUtils";
 
 // Import the map component with dynamic loading (no SSR)
 const LocationMap = dynamic(() => import("@/components/LocationMap"), {
@@ -26,6 +27,13 @@ type FormData = {
 const Contact = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  // State for the random background image
+  const [backgroundImage, setBackgroundImage] = useState<string>("");
+
+  // Set a random background image on component mount
+  useEffect(() => {
+    setBackgroundImage(getRandomBackgroundImage());
+  }, []);
 
   const {
     register,
@@ -70,10 +78,13 @@ const Contact = () => {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative py-20">
+      <section className="relative h-[40vh]">
         <div className="absolute inset-0 bg-gray-900/70 z-10" />
-        <div className="relative h-full w-full bg-[url('/images/contact-hero.jpg')] bg-cover bg-center">
-          <div className="container-custom relative z-20">
+        <div 
+          className="relative h-full w-full bg-cover bg-center"
+          style={{ backgroundImage: `url('${backgroundImage}')` }}
+        >
+          <div className="container-custom h-full flex items-center relative z-20">
             <div className="max-w-3xl text-white">
               <h1 className="text-4xl font-bold mb-4 text-white">Contact Us</h1>
               <p className="text-xl">

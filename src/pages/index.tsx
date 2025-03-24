@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { getRandomBackgroundImage } from "@/utils/imageUtils";
 
 const Home = () => {
-  // Placeholder data for featured catches
+  // State for the random background image
+  const [backgroundImage, setBackgroundImage] = useState<string>("");
+
+  // Set a random background image on component mount
+  useEffect(() => {
+    setBackgroundImage(getRandomBackgroundImage());
+  }, []);
+
+  // Placeholder data for featured catches - using existing images
   const featuredCatches = [
     {
       id: 1,
       title: "Giant Marlin",
       description: "A beautiful 250lb Blue Marlin caught off the coast.",
-      image: "/images/catch1.jpg",
+      image: "/LethalWeapon/images/IMG_3663.jpeg",
     },
     {
       id: 2,
       title: "Mahi-Mahi",
       description: "Colorful Mahi-Mahi caught during our half-day charter.",
-      image: "/images/catch2.jpg",
+      image: "/LethalWeapon/images/IMG_4011.jpeg",
     },
     {
       id: 3,
       title: "Yellowfin Tuna",
       description:
         "A group of anglers with their impressive Yellowfin Tuna catch.",
-      image: "/images/catch3.jpg",
+      image: "/LethalWeapon/images/IMG_4104.jpeg",
     },
   ];
 
@@ -36,9 +45,12 @@ const Home = () => {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative h-[80vh]">
+      <section className="relative h-[50vh]">
         <div className="absolute inset-0 bg-gray-900/70 z-10" />
-        <div className="relative h-full w-full bg-[url('/images/hero-boat.jpg')] bg-cover bg-center">
+        <div 
+          className="relative h-full w-full bg-cover bg-center"
+          style={{ backgroundImage: `url('${backgroundImage}')` }}
+        >
           <div className="container-custom h-full flex items-center relative z-20">
             <div className="max-w-2xl text-white">
               <h1 className="text-5xl font-bold mb-4 text-white">
@@ -90,7 +102,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <div className="absolute inset-0 bg-[url('/images/boat.jpg')] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/LethalWeapon/images/IMG_6936.jpeg')` }} />
             </div>
           </div>
         </div>
@@ -114,9 +126,10 @@ const Home = () => {
                 className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="relative h-64 w-full">
-                  <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-                    <span className="text-gray-500">Image placeholder</span>
-                  </div>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center" 
+                    style={{ backgroundImage: `url('${catch_.image}')` }}
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{catch_.title}</h3>

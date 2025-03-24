@@ -3,6 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBoatsDropdownOpen, setIsBoatsDropdownOpen] = useState(false);
 
   return (
     <header className="bg-ocean-blue shadow-md">
@@ -46,13 +47,57 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             <Link
               href="/"
               className="text-white hover:text-sunset-orange transition-colors"
             >
               Home
             </Link>
+            
+            {/* Boats Dropdown */}
+            <div className="relative group">
+              <button 
+                className="text-white hover:text-sunset-orange transition-colors flex items-center"
+                onClick={() => setIsBoatsDropdownOpen(!isBoatsDropdownOpen)}
+                onMouseEnter={() => setIsBoatsDropdownOpen(true)}
+                onMouseLeave={() => setIsBoatsDropdownOpen(false)}
+              >
+                Our Boats
+                <svg 
+                  className="ml-1 h-4 w-4" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Dropdown Menu */}
+              <div 
+                className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 ${isBoatsDropdownOpen ? 'block' : 'hidden'} group-hover:block`}
+                onMouseEnter={() => setIsBoatsDropdownOpen(true)}
+                onMouseLeave={() => setIsBoatsDropdownOpen(false)}
+              >
+                <div className="py-1">
+                  <Link 
+                    href="/crusader" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    34ft Crusader
+                  </Link>
+                  <Link 
+                    href="/grady-white" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    22' Grady-White
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
             <Link
               href="/rates"
               className="text-white hover:text-sunset-orange transition-colors"
@@ -85,6 +130,45 @@ const Header = () => {
               >
                 Home
               </Link>
+              
+              {/* Mobile Boats Dropdown */}
+              <div>
+                <button 
+                  className="text-white hover:text-sunset-orange transition-colors flex items-center"
+                  onClick={() => setIsBoatsDropdownOpen(!isBoatsDropdownOpen)}
+                >
+                  Our Boats
+                  <svg 
+                    className={`ml-1 h-4 w-4 transform ${isBoatsDropdownOpen ? 'rotate-180' : ''}`} 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isBoatsDropdownOpen && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    <Link
+                      href="/crusader"
+                      className="block text-white hover:text-sunset-orange transition-colors"
+                      onClick={() => {setIsMenuOpen(false); setIsBoatsDropdownOpen(false);}}
+                    >
+                      34ft Crusader
+                    </Link>
+                    <Link
+                      href="/grady-white"
+                      className="block text-white hover:text-sunset-orange transition-colors"
+                      onClick={() => {setIsMenuOpen(false); setIsBoatsDropdownOpen(false);}}
+                    >
+                      22' Grady-White
+                    </Link>
+                  </div>
+                )}
+              </div>
+              
               <Link
                 href="/rates"
                 className="text-white hover:text-sunset-orange transition-colors"
