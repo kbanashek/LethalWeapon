@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
+  basePath: process.env.NODE_ENV === 'production' ? '/LethalWeapon' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/LethalWeapon' : '',
   images: {
     unoptimized: true,
   },
