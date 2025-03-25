@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { getRandomBackgroundImage } from "@/utils/imageUtils";
+import SpeciesCard from "@/components/SpeciesCard"; // Update the import statement
 
 const Home = () => {
   // State for the random background image
@@ -32,6 +33,46 @@ const Home = () => {
       title: "Wahoo",
       description: "Our favorite fish to target...Wahoo!",
       image: "/LethalWeapon/images/IMG_4104.jpeg",
+    },
+  ];
+
+  // Fish species data
+  const fishSpecies = [
+    {
+      name: "Mahi Mahi",
+      image: "/LethalWeapon/images/species/mahi-mahi.jpg",
+    },
+    {
+      name: "Sailfish",
+      image: "/LethalWeapon/images/species/sailfish.jpg",
+    },
+    {
+      name: "Wahoo",
+      image: "/LethalWeapon/images/species/wahoo.jpg",
+    },
+    {
+      name: "Tuna",
+      image: "/LethalWeapon/images/species/tuna.jpg",
+    },
+    {
+      name: "Yellowtail Snapper",
+      image: "/LethalWeapon/images/species/yellow-tail.jpg",
+    },
+    {
+      name: "Mutton Snapper",
+      image: "/LethalWeapon/images/species/mutton-snapper.jpg",
+    },
+    {
+      name: "Red Grouper",
+      image: "/LethalWeapon/images/species/red-grouper.jpg",
+    },
+    {
+      name: "Black Grouper",
+      image: "/LethalWeapon/images/species/black-grouper.jpg",
+    },
+    {
+      name: "Red Snapper",
+      image: "/LethalWeapon/images/species/red-snapper.jpg",
     },
   ];
 
@@ -237,62 +278,12 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Mahi Mahi",
-                image: "/LethalWeapon/images/species/mahi-mahi.jpg",
-              },
-              {
-                name: "Sailfish",
-                image: "/LethalWeapon/images/species/sailfish.jpg",
-              },
-              {
-                name: "Wahoo",
-                image: "/LethalWeapon/images/species/wahoo.jpg",
-              },
-              {
-                name: "Tuna",
-                image: "/LethalWeapon/images/species/tuna.jpg",
-              },
-              {
-                name: "Yellowtail Snapper",
-                image: "/LethalWeapon/images/species/yellow-tail.jpg",
-              },
-              {
-                name: "Mutton Snapper",
-                image: "/LethalWeapon/images/species/mutton-snapper.jpg",
-              },
-              {
-                name: "Red Grouper",
-                image: "/LethalWeapon/images/species/red-grouper.jpg",
-              },
-              {
-                name: "Black Grouper",
-                image: "/LethalWeapon/images/species/black-grouper.jpg",
-              },
-              {
-                name: "Red Snapper",
-                image: "/LethalWeapon/images/species/red-snapper.jpg",
-              },
-            ].map((species, index) => (
-              <div
+            {fishSpecies.map((species, index) => (
+              <SpeciesCard
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/20"
-              >
-                <div className="h-40 relative">
-                  <img
-                    src={species.image}
-                    alt={`${species.name} fishing in Key Largo`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src =
-                        "/LethalWeapon/images/fish-placeholder.jpg";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
-                <h3 className="text-xl font-bold py-4">{species.name}</h3>
-              </div>
+                name={species.name}
+                image={species.image}
+              />
             ))}
           </div>
 
