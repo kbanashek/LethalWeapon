@@ -83,21 +83,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center">
-          <div className="animate-bounce bg-white p-2 w-10 h-10 ring-1 ring-slate-200 shadow-lg rounded-full flex items-center justify-center">
-            <svg
-              className="w-6 h-6 text-ocean-blue"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </div>
-        </div>
       </section>
 
       {/* Featured Vessels Section */}
@@ -253,36 +238,60 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              "Mahi Mahi",
-              "Sailfish",
-              "Wahoo",
-              "Tuna",
-              "Mutton Snapper",
-              "Red Grouper",
-              "Black Grouper",
-              "Red Snapper",
+              {
+                name: "Mahi Mahi",
+                image: "/LethalWeapon/images/species/mahi-mahi.jpg",
+              },
+              {
+                name: "Sailfish",
+                image: "/LethalWeapon/images/species/sailfish.jpg",
+              },
+              {
+                name: "Wahoo",
+                image: "/LethalWeapon/images/species/wahoo.jpg",
+              },
+              {
+                name: "Tuna",
+                image: "/LethalWeapon/images/species/tuna.jpg",
+              },
+              {
+                name: "Yellowtail Snapper",
+                image: "/LethalWeapon/images/species/yellow-tail.jpg",
+              },
+              {
+                name: "Mutton Snapper",
+                image: "/LethalWeapon/images/species/mutton-snapper.jpg",
+              },
+              {
+                name: "Red Grouper",
+                image: "/LethalWeapon/images/species/red-grouper.jpg",
+              },
+              {
+                name: "Black Grouper",
+                image: "/LethalWeapon/images/species/black-grouper.jpg",
+              },
+              {
+                name: "Red Snapper",
+                image: "/LethalWeapon/images/species/red-snapper.jpg",
+              },
             ].map((species, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/20"
+                className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/20"
               >
-                <div className="w-16 h-16 bg-sunset-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    ></path>
-                  </svg>
+                <div className="h-40 relative">
+                  <img
+                    src={species.image}
+                    alt={`${species.name} fishing in Key Largo`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "/LethalWeapon/images/fish-placeholder.jpg";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <h3 className="text-xl font-bold">{species}</h3>
+                <h3 className="text-xl font-bold py-4">{species.name}</h3>
               </div>
             ))}
           </div>
