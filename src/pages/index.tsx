@@ -123,37 +123,63 @@ const Home = () => {
               </div>
 
               <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <h3 className="text-2xl font-semibold mb-5 text-ocean-blue flex items-center">
-                  <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-r from-ocean-blue to-blue-400 mr-3 flex-shrink-0"></span>
-                  Our Vessels
-                </h3>
-                <p className="leading-relaxed mb-4 text-gray-700 pl-11">
-                  Capt. Pete will take you fishing on a 34-foot Crusader
-                  Downeast sportfishing boat. It is powered by one 375 HP
-                  Caterpillar engine, with a maximum cruising speed of 18 knots.
-                  The vessel provides a comfortable platform to hunt and capture
-                  South Atlantic game fish. You will find all the safety and
-                  fish finding technology on board, as well as a flybridge, a
-                  toilet, and a shower.
-                </p>
-                <p className="leading-relaxed text-gray-700 pl-11">
-                  For smaller groups or those seeking a more nimble fishing
-                  experience, we also offer trips on our 23' Grady-White center
-                  console. This vessel is perfect for nearshore adventures,
-                  featuring twin outboard engines for reliability and
-                  performance. The Grady-White is known for its exceptional
-                  handling in various sea conditions and provides an intimate
-                  fishing experience with all the necessary amenities and
-                  fishing equipment on board.
-                </p>
+                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
+                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
+                    Our Vessels
+                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
+                  </h3>
+                </div>
+
+                {/* 34ft Crusader */}
+                <div className="mb-8 p-6 rounded-lg shadow-sm">
+                  <h4 className="text-xl font-bold text-ocean-blue relative inline-block mb-3">
+                    34ft Crusader
+                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
+                  </h4>
+                  <p className="text-gray-600 mb-4">
+                    Our flagship vessel for serious offshore adventures
+                  </p>
+                  <p className="leading-relaxed text-gray-700">
+                    Capt. Pete will take you fishing on a 34-foot Crusader
+                    Downeast sportfishing boat. It is powered by one 375 HP
+                    Caterpillar engine, with a maximum cruising speed of 18
+                    knots. The vessel provides a comfortable platform to hunt
+                    and capture South Atlantic game fish. You will find all the
+                    safety and fish finding technology on board, as well as a
+                    flybridge, a toilet, and a shower.
+                  </p>
+                </div>
+
+                {/* 23' Grady-White */}
+                <div className="p-6 rounded-lg shadow-sm">
+                  <h4 className="text-xl font-bold text-ocean-blue relative inline-block mb-3">
+                    23' Grady-White
+                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
+                  </h4>
+                  <p className="text-gray-600 mb-4">
+                    Perfect for small groups and nearshore fishing
+                  </p>
+                  <p className="leading-relaxed text-gray-700">
+                    For smaller groups or those seeking a more nimble fishing
+                    experience, we also offer trips on our 23' Grady-White
+                    center console. This vessel is perfect for nearshore
+                    adventures, featuring twin outboard engines for reliability
+                    and performance. The Grady-White is known for its
+                    exceptional handling in various sea conditions and provides
+                    an intimate fishing experience with all the necessary
+                    amenities and fishing equipment on board.
+                  </p>
+                </div>
               </div>
 
               <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <h3 className="text-2xl font-semibold mb-5 text-ocean-blue flex items-center">
-                  <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-r from-ocean-blue to-blue-400 mr-3 flex-shrink-0"></span>
-                  Target Species
-                </h3>
-                <p className="leading-relaxed text-gray-700 pl-11">
+                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
+                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
+                    Target Species
+                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
+                  </h3>
+                </div>
+                <p className="leading-relaxed text-gray-700 pl-4">
                   The charter offers traditional nearshore and offshore fishing
                   in the Florida Keys for species such as Mutton Snapper, Red
                   and Black Grouper, Mahi Mahi, Sailfish, Wahoo, Red Snapper,
@@ -165,11 +191,13 @@ const Home = () => {
               </div>
 
               <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <h3 className="text-2xl font-semibold mb-5 text-ocean-blue flex items-center">
-                  <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-r from-ocean-blue to-blue-400 mr-3 flex-shrink-0"></span>
-                  What's Included
-                </h3>
-                <p className="leading-relaxed mb-6 text-gray-700 pl-11">
+                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
+                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
+                    What's Included
+                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
+                  </h3>
+                </div>
+                <p className="leading-relaxed mb-6 text-gray-700 pl-4">
                   Each trip will include rods, reels, tackle, live and
                   artificial baits, and a fishing license. So all you have to
                   bring is something to eat and drink for the day, and enjoy
@@ -177,12 +205,12 @@ const Home = () => {
                   a full day trip depending on the fish you want to catch, so
                   take your pick and get ready to reel!
                 </p>
-                <p className="mb-8 leading-relaxed text-gray-700 pl-11">
+                <p className="mb-8 leading-relaxed text-gray-700 pl-4">
                   Whether you're looking to catch trophy fish or just enjoy a
                   day on the water with family and friends, we have the perfect
                   charter package for you.
                 </p>
-                <div className="pl-11">
+                <div className="pl-4">
                   <Link
                     href="/contact"
                     className="btn btn-primary inline-block transform hover:translate-y-[-2px] transition-transform duration-300 shadow-md hover:shadow-lg"
