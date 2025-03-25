@@ -99,7 +99,7 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${backgroundImage}')` }}
         />
-        <div className="container mx-auto px-4 h-full flex items-center relative z-20">
+        <div className="container mx-auto px-4 h-full flex flex-col justify-between py-8 md:py-12 relative z-20">
           <div className="max-w-3xl text-white">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 md:mb-6 leading-tight text-white">
               Experience World-Class Fishing in Key Largo
@@ -108,20 +108,20 @@ const Home = () => {
               Join Captain Pete for unforgettable offshore and nearshore
               adventures aboard our premium fishing vessels
             </p>
-            <div className="flex flex-wrap gap-3 md:gap-4">
-              <Link
-                href="/contact"
-                className="btn btn-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg transform hover:scale-105 transition duration-300"
-              >
-                Book Your Charter
-              </Link>
-              <Link
-                href="/rates"
-                className="btn btn-outline text-white border-2 border-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg hover:bg-white hover:text-ocean-blue transform hover:scale-105 transition duration-300"
-              >
-                View Rates
-              </Link>
-            </div>
+          </div>
+          <div className="flex flex-wrap gap-3 md:gap-4">
+            <Link
+              href="/contact"
+              className="btn btn-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg transform hover:scale-105 transition duration-300"
+            >
+              Book Your Charter
+            </Link>
+            <Link
+              href="/rates"
+              className="btn btn-outline text-white border-2 border-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg hover:bg-white hover:text-ocean-blue transform hover:scale-105 transition duration-300"
+            >
+              View Rates
+            </Link>
           </div>
         </div>
       </section>

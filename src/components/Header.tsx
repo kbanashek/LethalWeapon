@@ -11,8 +11,16 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <Link
             href="/"
-            className="text-sunset-orange text-2xl md:text-3xl font-marker hover:text-white transition-colors tracking-wide"
-            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
+            className="text-2xl md:text-3xl font-marker tracking-wide"
+            style={{
+              background:
+                "linear-gradient(to right, #f8b500, #ff8c00, #ff6347)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textFillColor: "transparent",
+              textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
+            }}
           >
             Lethal Weapon Fishing Charters
           </Link>
@@ -131,6 +139,12 @@ const Header = () => {
               Rates
             </Link>
             <Link
+              href="/species"
+              className="text-white hover:text-sunset-orange transition-colors"
+            >
+              Species
+            </Link>
+            <Link
               href="/gallery"
               className="text-white hover:text-sunset-orange transition-colors"
             >
@@ -231,6 +245,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Rates
+              </Link>
+              <Link
+                href="/species"
+                className="text-white hover:text-sunset-orange transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Species
               </Link>
               <Link
                 href="/gallery"
