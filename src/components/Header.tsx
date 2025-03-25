@@ -8,24 +8,26 @@ const Header = () => {
   return (
     <header className="bg-ocean-blue shadow-md">
       <div className="container-custom py-4">
-        <div className="flex justify-between items-center">
-          <Link
-            href="/"
-            className="text-2xl md:text-3xl font-marker tracking-wide"
-            style={
-              {
-                background:
-                  "linear-gradient(to right, #f8b500, #ff8c00, #ff6347)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-                textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
-              } as React.CSSProperties
-            }
-          >
-            Lethal Weapon Fishing Charters
-          </Link>
+        <div className="flex items-center justify-between">
+          <div className="mr-auto">
+            <Link
+              href="/"
+              className="text-2xl md:text-3xl font-marker tracking-wide"
+              style={
+                {
+                  background:
+                    "linear-gradient(to right, #f8b500, #ff8c00, #ff6347)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
+                  textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
+                } as React.CSSProperties
+              }
+            >
+              Lethal Weapon Fishing Charters
+            </Link>
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">

@@ -2,15 +2,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import fs from "fs";
 import path from "path";
-
-// Define the type for our gallery items
-interface GalleryItem {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  imagePath: string;
-}
+import { useGalleryItems } from "@/hooks/useGalleryItems";
 
 // Define props for the Gallery component
 interface GalleryProps {
@@ -60,62 +52,11 @@ const Gallery = ({ images, basePath }: GalleryProps) => {
   ];
 
   // State to hold our generated gallery items
-  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // Generate gallery items from the images
-  useEffect(() => {
-    const items: GalleryItem[] = images.map((image, index) => {
-      // Determine category based on image name or other criteria
-      // This is a simple example - you might want to use a more sophisticated approach
-      let category = "charters"; // Default category
-      const imageLower = image.toLowerCase();
-
-      if (
-        imageLower.includes("boat") ||
-        imageLower.includes("crusader") ||
-        imageLower.includes("grady")
-      ) {
-        category = "boat";
-      } else if (
-        imageLower.includes("catch") ||
-        imageLower.includes("fish") ||
-        imageLower.includes("mahi") ||
-        imageLower.includes("tuna") ||
-        imageLower.includes("snapper") ||
-        imageLower.includes("grouper")
-      ) {
-        category = "catches";
-      } else if (
-        imageLower.includes("captain") ||
-        imageLower.includes("pete") ||
-        imageLower.includes("team") ||
-        imageLower.includes("crew")
-      ) {
-        category = "team";
-      }
-
-      // Generate a title from the image name
-      const fileName = path.basename(image, path.extname(image));
-      const title = fileName
-        .replace(/[_-]/g, " ")
-        .replace(/([A-Z])/g, " $1")
-        .replace(/\s+/g, " ")
-        .trim();
-
-      return {
-        id: index + 1,
-        category,
-        title: title || "Fishing Charter Photo",
-        description:
-          "Experience the thrill of fishing in Key Largo with Captain Pete.",
-        imagePath: `${basePath}/images/${image}`,
-      };
-    });
-
-    setGalleryItems(items);
-  }, [images, basePath]);
+  // Get gallery items using our custom hook with preloaded images
+  const galleryItems = useGalleryItems(images, basePath);
 
   // Filter gallery items based on active category
   const filteredItems =
