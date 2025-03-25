@@ -49,242 +49,175 @@ const Home = () => {
           name="keywords"
           content="Key Largo fishing, offshore fishing, deep sea fishing, Mahi-Mahi, Tuna, Wahoo, Sailfish, Snapper, Florida Keys fishing charters, sport fishing, family fishing trips"
         />
-        <meta
-          property="og:title"
-          content="Key Largo Fishing Charters | Lethal Weapon Fishing"
-        />
-        <meta
-          property="og:description"
-          content="Book your Key Largo fishing adventure with Captain Pete. Target Mahi-Mahi, Tuna, Wahoo, Sailfish, and more on our custom offshore fishing charters."
-        />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://lethalweaponfishing.com/" />
       </Head>
 
-      {/* Hero Section */}
-      <section className="relative h-[40vh]">
-        <div className="absolute inset-0 bg-gray-900/70 z-10" />
+      {/* Hero Section with Video Background */}
+      <section className="relative h-[50vh]">
+        <div className="absolute inset-0 bg-black/40 z-10" />
         <div
-          className="relative h-full w-full bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${backgroundImage}')` }}
-        >
-          <div className="container-custom h-full flex items-center relative z-20">
-            <div className="max-w-2xl text-white">
-              {/* <h1 className="text-4xl font-bold mb-4 text-white">
-                Lethal Weapon Fishing Adventures
-              </h1> */}
-              <p className="text-xl mb-8">
-                Experience the thrill of deep sea fishing with our professional
-                charter services. Whether you're a seasoned angler or a
-                first-timer, Lethal Weapon charters provide unforgettable
-                fishing experiences for everyone.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/rates" className="btn btn-primary">
-                  View Rates
-                </Link>
-                <Link href="/contact" className="btn btn-secondary">
-                  Book Now
-                </Link>
-              </div>
+        />
+        <div className="container mx-auto px-4 h-full flex items-center relative z-20">
+          <div className="max-w-3xl text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 md:mb-6 leading-tight text-white">
+              Experience World-Class Fishing in Key Largo
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 md:mb-8 text-white">
+              Join Captain Pete for unforgettable offshore and nearshore
+              adventures aboard our premium fishing vessels
+            </p>
+            <div className="flex flex-wrap gap-3 md:gap-4">
+              <Link
+                href="/contact"
+                className="btn btn-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg transform hover:scale-105 transition duration-300"
+              >
+                Book Your Charter
+              </Link>
+              <Link
+                href="/rates"
+                className="btn btn-outline text-white border-2 border-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg hover:bg-white hover:text-ocean-blue transform hover:scale-105 transition duration-300"
+              >
+                View Rates
+              </Link>
             </div>
+          </div>
+        </div>
+        <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center">
+          <div className="animate-bounce bg-white p-2 w-10 h-10 ring-1 ring-slate-200 shadow-lg rounded-full flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-ocean-blue"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Featured Vessels Section */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="container-custom">
-          <h2 className="text-4xl font-bold mb-12 text-center relative">
-            About Lethal Weapon
-            <span className="block h-1 w-24 bg-gradient-to-r from-ocean-blue to-sunset-orange mx-auto mt-4"></span>
-          </h2>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Our Premium Vessels</h2>
+            <div className="h-1 w-24 bg-sunset-orange mx-auto"></div>
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose the perfect vessel for your fishing adventure in the
+              beautiful waters of Key Largo
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            {/* Left Column - Main Content */}
-            <div className="space-y-12">
-              <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <p className="text-lg mb-6 leading-relaxed text-gray-800">
-                  Welcome to Lethal Weapon Fishing Charters, where fishing
-                  dreams become reality. Our experienced captains and crew are
-                  dedicated to providing you with the best fishing experience
-                  possible.
-                </p>
-                <p className="mb-6 leading-relaxed text-gray-700">
-                  Captain Pete Jacobsen invites you on a first class fishing
-                  adventure in the offshore waters of Key Largo, Florida. This
-                  area has an abundance of fish you will be able to chase and
-                  target with an expert crew led by Capt. Pete. Families and
-                  children are most welcome, as he loves to teach them about
-                  fishing and sharing his vast knowledge. The captain also
-                  welcomes beginners and seasoned anglers.
-                </p>
-              </div>
-
-              <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
-                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
-                    Our Vessels
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
-                  </h3>
-                </div>
-
-                {/* 34ft Crusader */}
-                <div className="mb-8 p-6 rounded-lg shadow-sm">
-                  <h4 className="text-xl font-bold text-ocean-blue relative inline-block mb-3">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* 34ft Crusader */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+              <div className="h-64 relative">
+                <img
+                  src="/LethalWeapon/images/IMG_4011.jpeg"
+                  alt="34ft Crusader Fishing Boat"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white">
                     34ft Crusader
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
-                  </h4>
-                  <p className="text-gray-600 mb-4">
+                  </h3>
+                  <p className="text-gray-200">
                     Our flagship vessel for serious offshore adventures
                   </p>
-                  <p className="leading-relaxed text-gray-700">
-                    Capt. Pete will take you fishing on a 34-foot Crusader
-                    Downeast sportfishing boat. It is powered by one 375 HP
-                    Caterpillar engine, with a maximum cruising speed of 18
-                    knots. The vessel provides a comfortable platform to hunt
-                    and capture South Atlantic game fish. You will find all the
-                    safety and fish finding technology on board, as well as a
-                    flybridge, a toilet, and a shower.
-                  </p>
-                </div>
-
-                {/* 23' Grady-White */}
-                <div className="p-6 rounded-lg shadow-sm">
-                  <h4 className="text-xl font-bold text-ocean-blue relative inline-block mb-3">
-                    23' Grady-White
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
-                  </h4>
-                  <p className="text-gray-600 mb-4">
-                    Perfect for small groups and nearshore fishing
-                  </p>
-                  <p className="leading-relaxed text-gray-700">
-                    For smaller groups or those seeking a more nimble fishing
-                    experience, we also offer trips on our 23' Grady-White
-                    center console. This vessel is perfect for nearshore
-                    adventures, featuring twin outboard engines for reliability
-                    and performance. The Grady-White is known for its
-                    exceptional handling in various sea conditions and provides
-                    an intimate fishing experience with all the necessary
-                    amenities and fishing equipment on board.
-                  </p>
                 </div>
               </div>
-
-              <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
-                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
-                    Target Species
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
-                  </h3>
+              <div className="p-6">
+                <p className="text-gray-700 mb-6">
+                  Our 34-foot Crusader Downeast sportfishing boat is powered by
+                  a 375 HP Caterpillar engine with a maximum cruising speed of
+                  18 knots. This vessel provides a comfortable platform for
+                  hunting and capturing South Atlantic game fish, equipped with
+                  all the necessary safety and fish-finding technology, plus
+                  amenities like a flybridge, toilet, and shower.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Offshore Fishing
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Up to 6 Guests
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Full Amenities
+                  </span>
                 </div>
-                <p className="leading-relaxed text-gray-700 pl-4">
-                  The charter offers traditional nearshore and offshore fishing
-                  in the Florida Keys for species such as Mutton Snapper, Red
-                  and Black Grouper, Mahi Mahi, Sailfish, Wahoo, Red Snapper,
-                  Skipjack Tuna, and more local species. The crew are very
-                  experienced in targeting offshore game fish and will provide
-                  you with expert advice on how you can catch them, too, so pay
-                  close attention and you'll be reeling in throughout the trip.
-                </p>
-              </div>
-
-              <div className="transform hover:scale-[1.01] transition-transform duration-300">
-                <div className="flex flex-col mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-ocean-blue shadow-sm">
-                  <h3 className="text-2xl font-bold text-ocean-blue relative inline-block">
-                    What's Included
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-sunset-orange"></span>
-                  </h3>
-                </div>
-                <p className="leading-relaxed mb-6 text-gray-700 pl-4">
-                  Each trip will include rods, reels, tackle, live and
-                  artificial baits, and a fishing license. So all you have to
-                  bring is something to eat and drink for the day, and enjoy
-                  your adventure! You will have an option to book a half day or
-                  a full day trip depending on the fish you want to catch, so
-                  take your pick and get ready to reel!
-                </p>
-                <p className="mb-8 leading-relaxed text-gray-700 pl-4">
-                  Whether you're looking to catch trophy fish or just enjoy a
-                  day on the water with family and friends, we have the perfect
-                  charter package for you.
-                </p>
-                <div className="pl-4">
-                  <Link
-                    href="/contact"
-                    className="btn btn-primary inline-block transform hover:translate-y-[-2px] transition-transform duration-300 shadow-md hover:shadow-lg"
+                <Link
+                  href="/rates"
+                  className="text-ocean-blue font-semibold hover:text-sunset-orange flex items-center group"
+                >
+                  View Crusader Rates
+                  <svg
+                    className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    Contact Us
-                  </Link>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
+                </Link>
               </div>
             </div>
 
-            {/* Right Column - Image and Benefits */}
-            <div className="space-y-12">
-              <div className="rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300">
+            {/* 23' Grady-White */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+              <div className="h-64 relative">
                 <img
-                  src="/LethalWeapon/images/IMG_4011.jpeg"
-                  alt="Fishing on Lethal Weapon Charter"
-                  className="w-full h-auto"
+                  src="/LethalWeapon/images/IMG_3663.jpeg"
+                  alt="23' Grady-White Fishing Boat"
+                  className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white">
+                    23' Grady-White
+                  </h3>
+                  <p className="text-gray-200">
+                    Perfect for small groups and nearshore fishing
+                  </p>
+                </div>
               </div>
-
-              <div className="bg-gradient-to-br from-ocean-blue to-blue-700 text-white p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
-                <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                  <span className="inline-block w-8 h-8 rounded-full bg-white/20 mr-3 flex-shrink-0 flex items-center justify-center">
-                    <span className="text-white">✓</span>
-                  </span>
-                  <span className="text-white">Why Choose Lethal Weapon?</span>
-                </h3>
-                <ul className="space-y-4 pl-11">
-                  <li className="flex items-start">
-                    <span className="text-sunset-orange mr-3 text-xl">•</span>
-                    <span className="leading-relaxed">
-                      Experienced captain with extensive local knowledge
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-sunset-orange mr-3 text-xl">•</span>
-                    <span className="leading-relaxed">
-                      Top-of-the-line fishing equipment and technology
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-sunset-orange mr-3 text-xl">•</span>
-                    <span className="leading-relaxed">
-                      Family-friendly charters for all experience levels
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-sunset-orange mr-3 text-xl">•</span>
-                    <span className="leading-relaxed">
-                      Prime fishing locations in the Florida Keys
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-sunset-orange mr-3 text-xl">•</span>
-                    <span className="leading-relaxed">
-                      Variety of target species year-round
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl shadow-md border border-gray-200 transform hover:scale-[1.02] transition-transform duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-ocean-blue">
-                  Ready to Book Your Charter?
-                </h3>
-                <p className="mb-6 text-gray-700">
-                  Contact us today to schedule your unforgettable fishing
-                  adventure in the beautiful waters of Key Largo.
+              <div className="p-6">
+                <p className="text-gray-700 mb-6">
+                  Our 23' Grady-White center console is ideal for smaller groups
+                  seeking a more nimble fishing experience. Perfect for
+                  nearshore adventures, this vessel features twin outboard
+                  engines for reliability and performance. The Grady-White is
+                  known for its exceptional handling in various sea conditions
+                  and provides an intimate fishing experience with all necessary
+                  amenities.
                 </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Nearshore Fishing
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Up to 3 Guests
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-ocean-blue rounded-full text-sm">
+                    Nimble & Fast
+                  </span>
+                </div>
                 <Link
                   href="/rates"
-                  className="text-ocean-blue font-semibold hover:underline flex items-center group"
+                  className="text-ocean-blue font-semibold hover:text-sunset-orange flex items-center group"
                 >
-                  View our rates
+                  View Grady-White Rates
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
@@ -306,39 +239,206 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Target Species Section */}
+      <section className="py-20 bg-ocean-blue text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Target Species</h2>
+            <div className="h-1 w-24 bg-sunset-orange mx-auto"></div>
+            <p className="mt-6 text-xl max-w-3xl mx-auto">
+              The Florida Keys offers some of the most diverse fishing
+              opportunities in the world
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              "Mahi Mahi",
+              "Sailfish",
+              "Wahoo",
+              "Tuna",
+              "Mutton Snapper",
+              "Red Grouper",
+              "Black Grouper",
+              "Red Snapper",
+            ].map((species, index) => (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/20"
+              >
+                <div className="w-16 h-16 bg-sunset-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold">{species}</h3>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-lg mb-8 max-w-3xl mx-auto">
+              The crew are very experienced in targeting offshore game fish and
+              will provide you with expert advice on how you can catch them,
+              too, so pay close attention and you'll be reeling in throughout
+              the trip.
+            </p>
+            <Link
+              href="/species"
+              className="inline-block px-8 py-3 bg-sunset-orange text-white rounded-lg hover:bg-sunset-orange/90 transform hover:scale-105 transition-all duration-300"
+            >
+              Learn More About Our Species
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">What's Included</h2>
+            <div className="h-1 w-24 bg-sunset-orange mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <svg
+                  className="w-8 h-8 text-ocean-blue"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Equipment</h3>
+              <p className="text-gray-600">
+                All fishing rods, reels, tackle, live and artificial baits are
+                provided for your convenience.
+              </p>
+            </div>
+
+            <div className="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <svg
+                  className="w-8 h-8 text-ocean-blue"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Licensing</h3>
+              <p className="text-gray-600">
+                A fishing license for all guests is included with your charter
+                booking.
+              </p>
+            </div>
+
+            <div className="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <svg
+                  className="w-8 h-8 text-ocean-blue"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Expert Guidance</h3>
+              <p className="text-gray-600">
+                Professional captain and crew with extensive local knowledge of
+                the best fishing spots.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-lg mb-8 max-w-3xl mx-auto text-gray-600">
+              All you have to bring is something to eat and drink for the day,
+              and enjoy your adventure! You will have an option to book a half
+              day or a full day trip depending on the fish you want to catch.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-3 bg-ocean-blue text-white rounded-lg hover:bg-ocean-blue/90 transform hover:scale-105 transition-all duration-300"
+            >
+              Book Your Charter Today
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Catches Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Catches</h2>
-            <p className="max-w-3xl mx-auto text-lg">
-              Take a look at some of the impressive catches our clients have
-              made on recent charters. You could be next!
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Featured Catches</h2>
+            <div className="h-1 w-24 bg-sunset-orange mx-auto"></div>
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+              See what our clients have been catching on recent trips
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {featuredCatches.map((catch_) => (
+            {featuredCatches.map((catch_item) => (
               <div
-                key={catch_.id}
-                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                key={catch_item.id}
+                className="bg-white rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.03] transition-all duration-300"
               >
-                <div className="relative h-64 w-full">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${catch_.image}')` }}
+                <div className="h-64 relative">
+                  <img
+                    src={catch_item.image}
+                    alt={catch_item.title}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{catch_.title}</h3>
-                  <p className="text-gray-600 mb-4">{catch_.description}</p>
+                  <h3 className="text-xl font-bold mb-2">{catch_item.title}</h3>
+                  <p className="text-gray-600">{catch_item.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/gallery" className="btn btn-primary">
+          <div className="mt-12 text-center">
+            <Link
+              href="/gallery"
+              className="inline-block px-8 py-3 border-2 border-ocean-blue text-ocean-blue rounded-lg hover:bg-ocean-blue hover:text-white transform hover:scale-105 transition-all duration-300"
+            >
               View More Catches
             </Link>
           </div>
@@ -346,25 +446,27 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-ocean-blue text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">
-            Ready for an Unforgettable Fishing Adventure?
+      <section className="py-20 bg-gradient-to-r from-ocean-blue to-blue-700 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            Ready for Your Fishing Adventure?
           </h2>
-          <p className="max-w-3xl mx-auto text-lg mb-8">
-            Book your charter today and create memories that will last a
-            lifetime. We offer competitive rates and flexible scheduling to
-            accommodate your needs.
+          <p className="text-xl mb-10 max-w-3xl mx-auto">
+            Contact us today to schedule your unforgettable fishing experience
+            in the beautiful waters of Key Largo.
           </p>
-          <div className="flex justify-center gap-4 flex-wrap">
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-sunset-orange text-white rounded-lg hover:bg-sunset-orange/90 transform hover:scale-105 transition-all duration-300 text-lg font-semibold"
+            >
+              Book Your Charter
+            </Link>
             <Link
               href="/rates"
-              className="btn bg-white text-ocean-blue hover:bg-gray-100"
+              className="px-8 py-4 bg-white text-ocean-blue rounded-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 text-lg font-semibold"
             >
-              View Rates
-            </Link>
-            <Link href="/contact" className="btn btn-secondary">
-              Book Now
+              View Our Rates
             </Link>
           </div>
         </div>
