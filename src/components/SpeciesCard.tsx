@@ -33,7 +33,7 @@ const SpeciesCard: React.FC<SpeciesCardProps> = ({ name, image }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
-        <h3 className="text-xl font-bold py-4">{name}</h3>
+        <h3 className="text-xl font-bold py-4 text-white">{name}</h3>
       </div>
 
       {/* Modal */}
